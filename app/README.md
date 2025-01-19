@@ -73,6 +73,6 @@ Si deseas contribuir al desarrollo de la aplicación, puedes:
 ## Seguimiento y gestión del proyecto
 
  [Jira] (https://red-team-yf0eeqx2.atlassian.net/jira/software/projects/KAN/list?atlOrigin=eyJpIjoiOWI2Y2ZlNTE3NzljNGFiYTg3MTUwMDIwOTIxZTNiNzQiLCJwIjoiaiJ9)
- [GitHub] (https://github.com/your-repository)
+ [GitHub] (https://github.com/noussadeb/BroodHen)
 
 Para contactarnos o hacer consultas, puedes enviarnos un correo a: [lb000059@red.ujaen.es o dn000014@red.ujaen.es].
