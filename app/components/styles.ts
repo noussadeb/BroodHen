@@ -90,6 +90,7 @@ passwordContainer: {
 showPasswordButton: {
   position: 'absolute',
   right: 10,
+
 },
 showPasswordText: {
   color: '#007bff',

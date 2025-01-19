@@ -57,11 +57,11 @@ const MainScreen = () => {
   const dayNumber = calculateDayNumber(incubationDate);
 
   if (dayNumber <= 3) {
-    return require('../../assets/images/ouevos1.jpg'); 
+    return require('../assets/images/ouevos1.jpg'); 
   } else if (dayNumber <= 18) {
-    return require('../../assets/images/ouevos2.jpg'); 
+    return require('../assets/images/ouevos2.jpg'); 
   } else {
-    return require('../../assets/images/ouevos2.jpg'); 
+    return require('../assets/images/ouevos2.jpg'); 
   }
 };
 
@@ -99,9 +99,9 @@ useEffect(() => {
   const getEggTurningIcon = (incubationDate) => {
     const dayNumber = calculateDayNumber(incubationDate);
     if (dayNumber >= 4 && dayNumber <= 18) {
-      return require('../../assets/images/Volteando.png');
+      return require('../assets/images/Volteando.png');
     } else {
-      return require('../../assets/images/nonVolteando.png'); 
+      return require('../assets/images/nonVolteando.png'); 
     }
   };
 
@@ -182,11 +182,11 @@ useEffect(() => {
       <Text style={styles.title}>{currentCycle.type || 'N/A'}</Text>
       <View style={styles.topSection}>
         <View style={styles.indicator}>
-          <Image source={require('../../assets/images/humedite.png')} style={styles.icon} />
+          <Image source={require('../assets/images/humedite.png')} style={styles.icon} />
           <Text style={styles.value}>{humidity}</Text>
         </View>
         <View style={styles.eggContainer}>
-        <Image source={require('../../assets/images/pollo.png')} style={styles.eggImage} />
+        <Image source={require('../assets/images/pollo.png')} style={styles.eggImage} />
           <View style={styles.eggImageContainer}>
           
             <Image
@@ -203,7 +203,7 @@ useEffect(() => {
         </View>
 
         <View style={styles.indicator}>
-          <Image source={require('../../assets/images/temperatura.png')} style={styles.icon} />
+          <Image source={require('../assets/images/temperatura.png')} style={styles.icon} />
           <Text style={styles.value}>{temperature}</Text>
         </View>
       </View>
@@ -232,7 +232,7 @@ useEffect(() => {
           }}
         >
           <Image
-            source={require('../../assets/images/decrease.png')}
+            source={require('../assets/images/decrease.png')}
             style={styles.iconButton}
           />
         </TouchableOpacity>
@@ -252,7 +252,7 @@ useEffect(() => {
           }}
         >
           <Image
-            source={require('../../assets/images/increase.png')}
+            source={require('../assets/images/increase.png')}
             style={styles.iconButton}
           />
         </TouchableOpacity>

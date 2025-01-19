@@ -61,7 +61,7 @@ const LoginScreen = () => {
         <View style={styles.containerLog}>
           {/* صورة المستخدم */}
           <Image
-            source={require('../../assets/images/icons-usuario.png')} // تأكد من صحة المسار
+            source={require('../assets/images/icons-usuario.png')} // تأكد من صحة المسار
             style={styles.logo}
           />
 
