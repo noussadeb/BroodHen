@@ -25,7 +25,7 @@ const Header = ({ navigation }) => {
       <View style={styles.headerH}>
         <TouchableOpacity onPress={toggleMenu}>
           <Image
-            source={require('../../assets/images/icon-menu.png')} // تأكد من المسار الصحيح للصورة
+            source={require('../assets/images/icon-menu.png')} // تأكد من المسار الصحيح للصورة
             style={styles.menuIcon}
           />
         </TouchableOpacity>
@@ -41,43 +41,71 @@ const Header = ({ navigation }) => {
         onRequestClose={toggleMenu}
       >
         <Pressable style={styles.modalBackground} onPress={toggleMenu}>
-  <View style={styles.menuContainer}>
-    {/* قائمة الأزرار */}
-    {navigation ? null : (
-      <>
-        {/* استخدام الروابط في حال عدم وجود navigation */}
-        <Link href="/Nueva_ecl" style={styles.menuItem}>
-          <Text style={styles.menuText}>Nueva eclosión</Text>
-        </Link>
+          <View style={styles.menuContainer}>
+            {/* قائمة الأزرار */}
+            {navigation ? null : (
+              <>
+                {/* Nueva eclosión */}
+                <Link href="/Nueva_ecl" style={styles.menuItem}>
+                  <View style={styles.menuRow}>
+                    <Image
+                      source={require('../assets/images/mas.png')}
+                      style={styles.menuIconSmall}
+                    />
+                    <Text style={styles.menuText}>Nueva eclosión</Text>
+                  </View>
+                </Link>
 
-        <Link href="/Archivos" style={styles.menuItem}>
-          <Text style={styles.menuText}>Archivo</Text>
-        </Link>
+                {/* Archivo */}
+                <Link href="/Archivos" style={styles.menuItem}>
+                  <View style={styles.menuRow}>
+                    <Image
+                      source={require('../assets/images/archivo.png')}
+                      style={styles.menuIconSmall}
+                    />
+                    <Text style={styles.menuText}>Archivo</Text>
+                  </View>
+                </Link>
 
-        <Link href="/Tienda" style={styles.menuItem}>
-          <Text style={styles.menuText}>Tienda</Text>
-        </Link>
+                {/* Tienda */}
+                <Link href="/Tienda" style={styles.menuItem}>
+                  <View style={styles.menuRow}>
+                    <Image
+                      source={require('../assets/images/tienda.png')}
+                      style={styles.menuIconSmall}
+                    />
+                    <Text style={styles.menuText}>Tienda</Text>
+                  </View>
+                </Link>
 
-        <Link href="/Informacion" style={styles.menuItem}>
-          <Text style={styles.menuText}>Información</Text>
-        </Link>
+                {/* Información */}
+                <Link href="/Informacion" style={styles.menuItem}>
+                  <View style={styles.menuRow}>
+                    <Image
+                      source={require('../assets/images/info.png')}
+                      style={styles.menuIconSmall}
+                    />
+                    <Text style={styles.menuText}>Información</Text>
+                  </View>
+                </Link>
 
-        <Link href="/Ajustes" style={styles.menuItem}>
-          <Text style={styles.menuText}>Ajustes</Text>
-        </Link>
-
-      </>
-    )}
- 
-   
-  </View>
-</Pressable>
-
+                {/* Ajustes */}
+                <Link href="/Ajustes" style={styles.menuItem}>
+                  <View style={styles.menuRow}>
+                    <Image
+                      source={require('../assets/images/ajustes.png')}
+                      style={styles.menuIconSmall}
+                    />
+                    <Text style={styles.menuText}>Ajustes</Text>
+                  </View>
+                </Link>
+              </>
+            )}
+          </View>
+        </Pressable>
       </Modal>
     </View>
   );
 };
 
 export default Header;
-
-

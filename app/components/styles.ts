@@ -6,20 +6,20 @@ const styles = StyleSheet.create({
 
  container: {
   flex: 1,
-  backgroundColor: '#DCE7F3', // لون الخلفية مثل الصورة
+  backgroundColor: 'rgba(233, 241, 251, 0.5)',
   justifyContent: 'center',
   padding: 20,
 },
 containerNv: {
   flex: 1,
-  backgroundColor: '#D6EAF8', // لون الخلفية مثل الصورة
+  backgroundColor: '#D6EAF8', 
   justifyContent: 'center',
   padding: 20,
 },
 
 containerLog:{
   flex: 1,
-  backgroundColor: '#D6EAF8', // لون الخلفية مثل الصورة
+  backgroundColor: 'rgba(233, 241, 251, 0.5)', 
   justifyContent: 'center',
   padding: 20,
   alignItems: 'center',
@@ -41,12 +41,9 @@ input: {
   shadowOpacity: 0.1,
   shadowRadius: 5,
   marginBottom: 15,
-  borderWidth: 2, // يضيف إطارًا
-  borderColor: '#AAB7B8', // لون الإطار
+  borderWidth: 2, 
+  borderColor: '#AAB7B8', 
 },
-
-
-
 
 button: {
   width: '90%',
@@ -103,7 +100,7 @@ title: {
   fontWeight: 'bold',
   color: 'black',
   marginBottom: 20,
-  textAlign: 'center', // يجعل النص في المنتصف أفقياً
+  textAlign: 'center', 
 },
 
  
@@ -117,9 +114,6 @@ title: {
 
 
  ///////////////***********Home***********/////////////////////////
-
-
-
 
 
    topSection: { 
@@ -162,7 +156,7 @@ title: {
     width: 40, 
     height: 40, 
     resizeMode: 'contain', 
-    top: -180, // يمكنك تغيير القيمة حسب الحاجة لرفع الأيقونة
+    top: -180, 
   },
   
    remainingDays: { 
@@ -271,7 +265,9 @@ butonText: {
     borderColor: '#ccc',
     borderRadius: 10,
     padding: 10,
-  },
+    backgroundColor: '#DCE7F3',  
+},
+
   imageTiend: {
     width: '100%',
     height: 150,
@@ -293,14 +289,14 @@ butonText: {
   addButton: {
     backgroundColor: '#007ACC',
     padding: 10,
-    borderRadius: 50,  // الشكل الدائري
+    borderRadius: 50, 
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   addIcon: {
-    width: 40,  // حجم الأيقونة
-    height: 40,  // حجم الأيقونة
+    width: 40, 
+    height: 40, 
   },
   emptyText: {
     textAlign: 'center',
@@ -530,6 +526,15 @@ logoutText: {
     color: '#333',
     textAlign: 'center',
   },
+  menuRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  menuIconSmall: {
+    width: 24,
+    height: 24,
+    marginRight: 10, 
+  },
 
 
 
@@ -551,8 +556,20 @@ logoutText: {
       marginVertical: 10,
     },
   
+    
+   /////////*****InfPollo */////////////
   
-  
+
+      
+      imageP: {
+        width: 300,
+        height: 300,
+        marginBottom: 20,
+        borderRadius: 10, // إضافة حدود مستديرة للصورة
+      },
+      
+      
+    
   
 
 

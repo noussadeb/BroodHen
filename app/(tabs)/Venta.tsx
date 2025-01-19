@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import styles from '../components/styles';
 import { useNavigation } from '@react-navigation/native';
-import Header from '../components/Header';
+
 
 const VentaScreen = () => {
   const navigation = useNavigation();
@@ -99,7 +99,7 @@ const VentaScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Header onMenuPress={() => alert('Menu clicked')} />
+      
       <Text style={styles.title}>Agregar pájaros</Text>
 
       <TextInput

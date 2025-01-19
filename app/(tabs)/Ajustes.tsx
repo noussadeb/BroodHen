@@ -7,17 +7,17 @@ const SettingsScreen = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const navigation = useNavigation();
 
-  // دالة لتسجيل الخروج
+ 
   const handleLogout = () => {
     console.log('Cerrar sesión');
   };
 
-  // دالة لتغيير وضع الخلفية بين داكن وفاتح
+
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  // تعيين اللون بناءً على وضع الوضع الداكن
+ 
   const backgroundColor = isDarkMode ? '#333' : '#f4f4f4';
   const textColor = isDarkMode ? '#fff' : '#333';
 
@@ -25,7 +25,7 @@ const SettingsScreen = () => {
     <ScrollView contentContainerStyle={[styles.container, { backgroundColor }]}>
       <Text style={[styles.header, { color: textColor }]}>Ajustes</Text>
 
-      {/* بيانات الملف الشخصي */}
+      
       <TouchableOpacity
         style={styles.option}
         onPress={() => navigation.navigate('Perfil')}>
@@ -35,7 +35,7 @@ const SettingsScreen = () => {
         </View>
       </TouchableOpacity>
 
-      {/* الإشعارات */}
+     
       <TouchableOpacity
         style={styles.option}
         onPress={() => console.log('Abrir Notificaciones')}>
@@ -45,7 +45,7 @@ const SettingsScreen = () => {
         </View>
         </TouchableOpacity>
 
-      {/* اللغة */}
+     
       <TouchableOpacity
         style={styles.option}
         onPress={() => console.log('Cambiar idioma')}>
@@ -55,7 +55,7 @@ const SettingsScreen = () => {
         </View>
       </TouchableOpacity>
 
-      {/* زر تغيير الوضع الداكن */}
+      
       <TouchableOpacity
         style={styles.option}
         onPress={toggleDarkMode}>
@@ -67,7 +67,7 @@ const SettingsScreen = () => {
         </View>
       </TouchableOpacity>
 
-      {/* تسجيل الخروج */}
+     
       <TouchableOpacity
         style={styles.logoutButton}
         onPress={handleLogout}>

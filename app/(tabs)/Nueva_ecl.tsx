@@ -3,17 +3,17 @@ import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Switch } fr
 import { Provider as PaperProvider } from 'react-native-paper';
 import { DatePickerModal } from 'react-native-paper-dates';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { db } from '../components/firebase'; // تأكد من مسار ملف Firebase الخاص بك
+import { db } from '../components/firebase'; 
 
 function NewHatchScreen() {
   const [type, setType] = useState('');
   const [incubationDate, setIncubationDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [eggPrimerdia, setEggPrimerdia] = useState(''); // تخزين عدد البيض في الحقل الجديد
+  const [eggPrimerdia, setEggPrimerdia] = useState(''); 
   const [extendHatch, setExtendHatch] = useState(false);
 
   const handleSave = async () => {
-    // التحقق من صحة المدخلات
+    
     if (!type || eggPrimerdia === undefined || isNaN(Number(eggPrimerdia))) {
       Alert.alert('Error', 'Por favor, complete todos los campos obligatorios.');
       return;
@@ -23,7 +23,7 @@ function NewHatchScreen() {
       const docRef = await addDoc(collection(db, 'NuevaEcl'), {
         type,
         incubationDate: incubationDate.toISOString(),
-        eggPrimerdia: Number(eggPrimerdia), // تخزين عدد البيض هنا
+        eggPrimerdia: Number(eggPrimerdia), 
         extendHatch,
         createdAt: new Date().toISOString(),
       });
@@ -33,7 +33,7 @@ function NewHatchScreen() {
         `Se ha guardado el registro con ID: ${docRef.id}`
       );
 
-      handleCancel(); // إعادة تعيين الحقول بعد الحفظ
+      handleCancel(); 
     } catch (error) {
       Alert.alert('Error', 'No se pudo guardar el registro.');
       console.error('Error al guardar:', error);
@@ -53,7 +53,7 @@ function NewHatchScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>Registrar una nueva incubación</Text>
 
-        {/* نوع */}
+        
         <View style={styles.rowContainer}>
           <Text style={styles.label}>Tipo:</Text>
           <TextInput
@@ -64,7 +64,7 @@ function NewHatchScreen() {
           />
         </View>
 
-        {/* تاريخ */}
+       
         <View style={styles.rowContainer}>
           <Text style={styles.label}>Día de incubación:</Text>
           <TouchableOpacity
@@ -84,28 +84,28 @@ function NewHatchScreen() {
           onConfirm={(params) => {
             setShowDatePicker(false);
             if (params.date) {
-              setIncubationDate(params.date); // تحديث الحالة إذا كانت القيمة صالحة
+              setIncubationDate(params.date); 
             } else {
               Alert.alert('Erreur', 'Aucune date sélectionnée.');
             }
           }}
-          mode="single" // وضع الاختيار الفردي
-          locale="fr" // اللغة الفرنسية
+          mode="single" 
+          locale="fr" 
         />
 
-        {/* عدد البيض */}
+        
         <View style={styles.rowContainer}>
           <Text style={styles.label}>Número de huevos:</Text>
           <TextInput
             style={styles.input}
             placeholder="Ingrese el número de huevos"
             keyboardType="numeric"
-            value={eggPrimerdia ? eggPrimerdia.toString() : ''} // عرض القيمة كـ نص
-            onChangeText={(text) => setEggPrimerdia(text)} // تحديث الحقل الجديد
+            value={eggPrimerdia ? eggPrimerdia.toString() : ''} 
+            onChangeText={(text) => setEggPrimerdia(text)} 
           />
         </View>
 
-        {/* مفتاح التمديد */}
+        
         <View style={styles.rowContainer}>
           <Text style={styles.label}>Extender la eclosión:</Text>
           <Switch value={extendHatch} onValueChange={setExtendHatch} />
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#DCE7F3', // لون خلفية مشابه للصورة
+    backgroundColor: '#DCE7F3', 
   },
   title: {
     fontSize: 20,

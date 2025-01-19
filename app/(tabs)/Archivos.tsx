@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
-import { db } from '../components/firebase'; // تأكد من مسار ملف Firebase الخاص بك
-import { useNavigation } from '@react-navigation/native'; // لاستعمال التنقل بين الشاشات
+import { db } from '../components/firebase'; 
+import { useNavigation } from '@react-navigation/native'; 
 import styles from '../components/styles';
-import Header from '../components/Header';
 
 
-// تعريف نوع البيانات (اختياري ولكنه مفيد للتصحيح)
+
+
 type HatchLog = {
   id: string;
   type: string;
@@ -19,7 +19,7 @@ type HatchLog = {
 function ArchivosScreen() {
   const [logs, setLogs] = useState<HatchLog[]>([]);
   const [loading, setLoading] = useState(true);
-  const navigation = useNavigation(); // لاستخدام التنقل بين الشاشات
+  const navigation = useNavigation(); 
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -43,7 +43,7 @@ function ArchivosScreen() {
   }, []);
 
   const handleLogPress = (logId: string) => {
-    // التنقل إلى صفحة النسب المئوية للتفقيس
+   
     navigation.navigate('Percentage', { logId });
   };
 
@@ -72,7 +72,7 @@ function ArchivosScreen() {
 
   return (
     <View style={styles.container}>
-      <Header onMenuPress={() => alert('Menu clicked')} />
+     
       <Text style={styles.header}>Registros de Incubaciones</Text>
       <FlatList
         data={logs}

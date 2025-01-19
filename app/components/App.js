@@ -12,6 +12,7 @@ import PercentageScreen from '../(tabs)/Percentage';
 import { ThemeProvider } from '../components/ThemeContext';
 import SettingsScreen from '../(tabs)/Ajustes';
 import ArchivosScreen from '../(tabs)/Archivos';
+import InfPolloScreen from '../(tabs)/InfPollo';
 
 
 
@@ -45,6 +46,7 @@ function App() {
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="Archivos" component={ArchivosScreen} />
           <Stack.Screen name="Percentage" component={PercentageScreen} />
+          <Stack.Screen name="InfPollo" component={InfPolloScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

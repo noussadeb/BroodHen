@@ -157,9 +157,6 @@ useEffect(() => {
 };
 
 
-
-
-
   const handleSaveEggCount = async () => {
     try {
       const docRef = doc(db, 'NuevaEcl', currentCycle.id);
@@ -178,7 +175,7 @@ useEffect(() => {
 
   return (
     <View style={styles.container}>
-      {/*<Header onMenuPress={() => alert('Menu clicked')} />*/}
+      <Header onMenuPress={() => alert('Menu clicked')} />
       <Text style={styles.title}>{currentCycle.type || 'N/A'}</Text>
       <View style={styles.topSection}>
         <View style={styles.indicator}>
@@ -208,8 +205,6 @@ useEffect(() => {
         </View>
       </View>
       
-
-      <Header onMenuPress={() => alert('Menu clicked')} />
       
 
       <Calendar

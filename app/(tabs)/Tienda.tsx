@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../components/firebase'; // إعدادات Firebase
+import { db } from '../components/firebase'; 
 import { useNavigation } from '@react-navigation/native';
 import styles from '../components/styles';
 
 const TiendaScreen = () => {
   const navigation = useNavigation();
-  const [salesData, setSalesData] = useState<any[]>([]); // البيانات المسجلة
-  const [loading, setLoading] = useState(true); // حالة التحميل
+  const [salesData, setSalesData] = useState<any[]>([]); 
+  const [loading, setLoading] = useState(true); 
 
-  // المسار الافتراضي للصورة
-  const noImagePath = require('../../assets/images/no-image.jpg');
-  const addIcon = require('../../assets/images/añadir.png'); // إضافة الأيقونة
+  
+  const noImagePath = require('../assets/images/no-image.jpg');
+  const addIcon = require('../assets/images/añadir.png'); 
 
-  // جلب البيانات من Firestore
+  
   const fetchSalesData = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, 'Tienda')); // قراءة البيانات
-      const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })); // تحويل إلى مصفوفة
-      setSalesData(data); // حفظ البيانات
+      const querySnapshot = await getDocs(collection(db, 'Tienda')); 
+      const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })); 
+      setSalesData(data); 
     } catch (error) {
       console.error('Error al obtener los datos de ventas:', error);
     } finally {
-      setLoading(false); // إنهاء التحميل
+      setLoading(false); 
     }
   };
 
@@ -69,9 +69,9 @@ const TiendaScreen = () => {
       )}
       <TouchableOpacity
         style={styles.addButton}
-        onPress={() => navigation.navigate('Venta')} // التنقل إلى صفحة "Venta"
+        onPress={() => navigation.navigate('Venta')} 
       >
-        <Image source={addIcon} style={styles.addIcon} />  {/* استخدام الأيقونة هنا */}
+        <Image source={addIcon} style={styles.addIcon} />  
       </TouchableOpacity>
     </View>
   );
