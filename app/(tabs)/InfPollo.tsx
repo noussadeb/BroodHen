@@ -5,12 +5,12 @@ import styles from '../components/styles';
 
 const InfPolloScreen = () => {
   const route = useRoute();
-  const { name, info, image } = route.params || {}; // الحصول على البيانات الممررة
+  const { name, info, image } = route.params || {};
 
   if (!name || !info || !image) {
     return (
       <View style={styles.container}>
-        <Text style={styles.error}>لا توجد معلومات متوفرة.</Text>
+        <Text style={styles.error}>no hay informacion</Text>
       </View>
     );
   }

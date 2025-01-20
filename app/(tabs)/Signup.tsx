@@ -2,15 +2,15 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { auth } from '../components/firebase'; // تأكد من إعداد Firebase بشكل صحيح
-import { createUserWithEmailAndPassword } from 'firebase/auth'; // استيراد الدالة الخاصة بتسجيل المستخدمين
-import { useNavigation } from '@react-navigation/native'; // لإدارة التنقل
+import { auth } from '../components/firebase'; 
+import { createUserWithEmailAndPassword } from 'firebase/auth'; 
+import { useNavigation } from '@react-navigation/native'; 
 import styles from '../components/styles';
 
 const SignupScreen = () => {
   const navigation = useNavigation();
 
-  // مخطط التحقق من صحة المدخلات
+  
   const SignupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
@@ -23,7 +23,7 @@ const SignupScreen = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       Alert.alert('Sign Up Successful', `Welcome to the app, ${email}!`);
-      navigation.navigate('Login'); // التنقل إلى شاشة تسجيل الدخول بعد النجاح
+      navigation.navigate('Login'); 
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -46,10 +46,10 @@ const SignupScreen = () => {
     >
       {({ handleChange, handleSubmit, values, errors }) => (
         <View style={styles.containerLog}>
-          {/* عنوان الصفحة */}
+         
           <Text style={styles.title}>Create Account</Text>
 
-          {/* إدخال البريد الإلكتروني */}
+          
           <TextInput
             style={styles.input}
             placeholder="Email"
@@ -59,7 +59,7 @@ const SignupScreen = () => {
           />
           {errors.email && <Text style={styles.error}>{errors.email}</Text>}
 
-          {/* إدخال كلمة المرور */}
+         
           <TextInput
             style={styles.input}
             placeholder="Password"
@@ -69,7 +69,7 @@ const SignupScreen = () => {
           />
           {errors.password && <Text style={styles.error}>{errors.password}</Text>}
 
-          {/* إدخال تأكيد كلمة المرور */}
+          
           <TextInput
             style={styles.input}
             placeholder="Confirm Password"
@@ -79,12 +79,12 @@ const SignupScreen = () => {
           />
           {errors.confirmPassword && <Text style={styles.error}>{errors.confirmPassword}</Text>}
 
-          {/* زر تسجيل حساب */}
+          
           <TouchableOpacity style={styles.button} onPress={handleSubmit}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
 
-          {/* خيارات إضافية */}
+        
           <View style={styles.footer}>
             <Text style={styles.footerText}>
               Already have an account?{' '}

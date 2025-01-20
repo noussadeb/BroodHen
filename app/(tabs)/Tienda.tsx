@@ -41,8 +41,8 @@ const TiendaScreen = () => {
         <FlatList
           data={salesData}
           keyExtractor={(item) => item.id}
-          numColumns={2} // عرض عنصرين في كل صف
-          columnWrapperStyle={styles.row} // نمط الصف
+          numColumns={2} 
+          columnWrapperStyle={styles.row} 
           renderItem={({ item }) => (
             <View style={styles.saleItem}>
               <Image

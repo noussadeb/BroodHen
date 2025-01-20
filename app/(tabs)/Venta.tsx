@@ -57,22 +57,22 @@ const VentaScreen = () => {
         comentario: formData.comentario,
         precioCompleto: parseFloat(formData.precioCompleto) || 0,
         fechaRegistro: new Date().toISOString(),
-        imagenes: '', // صورة ستضاف لاحقاً
+        imagenes: '', 
       });
   
       if (imageUri) {
-        // تحويل URI الصورة إلى Blob
+       
         const response = await fetch(imageUri);
         const blob = await response.blob();
   
-        // تحميل الصورة إلى Firebase Storage
-        const imageRef = ref(storage, `images/${docRef.id}.jpg`); // `docRef.id` يستخدم كاسم فريد للصورة
+        
+        const imageRef = ref(storage, `images/${docRef.id}.jpg`); 
         await uploadBytes(imageRef, blob);
   
-        // الحصول على الرابط العام للصورة
+       
         const imageUrl = await getDownloadURL(imageRef);
   
-        // تحديث المستند في Firestore مع رابط الصورة
+        
         const docUpdateRef = doc(db, 'Tienda', docRef.id);
         await updateDoc(docUpdateRef, {
           imagenes: imageUrl,
