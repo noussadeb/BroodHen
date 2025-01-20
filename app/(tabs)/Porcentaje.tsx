@@ -6,7 +6,7 @@ import { db } from '../components/firebase';
 import { useRoute } from '@react-navigation/native';
 import styles from '../components/styles';
 
-const PercentageScreen = () => {
+const PorcentajeScreen = () => {
   const { logId } = useRoute().params;
   const [loading, setLoading] = useState(true);
   const [logData, setLogData] = useState(null);
@@ -124,4 +124,4 @@ const PercentageScreen = () => {
   );
 };
 
-export default PercentageScreen;
+export default PorcentajeScreen;

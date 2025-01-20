@@ -6,18 +6,16 @@ import { db } from '../components/firebase';
 import Header from '../components/Header';
 import styles from '../components/styles';
 
-
 const MainScreen = () => {
   const [incubationCycles, setIncubationCycles] = useState([]);
   const [currentCycleIndex, setCurrentCycleIndex] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
   const [remainingEggs, setRemainingEggs] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false); // حالة Modal لإدخال البيض المتبقي
+  const [imageModalVisible, setImageModalVisible] = useState(false); // حالة Modal لإظهار الصورة
   const [markedDates, setMarkedDates] = useState({});
   const [temperature, setTemperature] = useState('N/A');
   const [humidity, setHumidity] = useState('N/A');
-
-
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -28,80 +26,74 @@ const MainScreen = () => {
           const startIncubationDate = new Date(cycle.incubationDate);
           const dayAfter21 = new Date(startIncubationDate);
           dayAfter21.setDate(startIncubationDate.getDate() + 21); 
-  
+
           const today = new Date();
-  
-          
+
           if (today > dayAfter21) {
             return null; 
           }
-  
-          
+
           return cycle;
-        }).filter(cycle => cycle !== null); 
-  
+        }).filter(cycle => cycle !== null);
+
         setIncubationCycles(cycles);
       },
       (error) => {
         console.error('Error fetching incubation cycles:', error);
       }
     );
-  
+
     return () => unsubscribe();
   }, []);
-  
 
   const currentCycle = incubationCycles[currentCycleIndex] || {};
 
   const getEggImage = (incubationDate) => {
-  const dayNumber = calculateDayNumber(incubationDate);
+    const dayNumber = calculateDayNumber(incubationDate);
 
-  if (dayNumber <= 3) {
-    return require('../assets/images/ouevos1.jpg'); 
-  } else if (dayNumber <= 18) {
-    return require('../assets/images/ouevos2.jpg'); 
-  } else {
-    return require('../assets/images/ouevos2.jpg'); 
-  }
-};
+    if (dayNumber <= 3) {
+      return require('../assets/images/ouevos1.jpg');
+    } else if (dayNumber <= 18) {
+      return require('../assets/images/ouevos2.jpg');
+    } else {
+      return require('../assets/images/ouevos2.jpg');
+    }
+  };
 
+  useEffect(() => {
+    if (!currentCycle || !currentCycle.incubationDate) {
+      setMarkedDates({});
+      setTemperature('N/A');
+      setHumidity('N/A');
+      return;
+    }
 
-useEffect(() => {
-  if (!currentCycle || !currentCycle.incubationDate) {
-    setMarkedDates({});
-    setTemperature('N/A');
-    setHumidity('N/A');
-    return;
-  }
+    const incubationDate = new Date(currentCycle.incubationDate); 
+    if (isNaN(incubationDate)) { 
+      console.error('Invalid incubation date:', currentCycle.incubationDate);
+      return;
+    }
 
-  const incubationDate = new Date(currentCycle.incubationDate); 
-  if (isNaN(incubationDate)) { 
-    console.error('Invalid incubation date:', currentCycle.incubationDate);
-    return;
-  }
+    setMarkedDates(generateMarkedDates(currentCycle.incubationDate, currentCycle.eggCount));
+    const dayNumber = calculateDayNumber(incubationDate);
+    if (dayNumber <= 18) {
+      setTemperature('37.5°C');
+      setHumidity('65%');
+    } else if (dayNumber <= 21) {
+      setTemperature('38.5°C');
+      setHumidity('75%');
+    } else {
+      setTemperature('N/A');
+      setHumidity('N/A');
+    }
+  }, [currentCycle]);
 
-  setMarkedDates(generateMarkedDates(currentCycle.incubationDate, currentCycle.eggCount));
-  const dayNumber = calculateDayNumber(incubationDate);
-  if (dayNumber <= 18) {
-    setTemperature('37.5°C');
-    setHumidity('65%');
-  } else if (dayNumber <= 21) {
-    setTemperature('38.5°C');
-    setHumidity('75%');
-  } else {
-    setTemperature('N/A');
-    setHumidity('N/A');
-  }
-}, [currentCycle]);
-
-
-  
   const getEggTurningIcon = (incubationDate) => {
     const dayNumber = calculateDayNumber(incubationDate);
     if (dayNumber >= 4 && dayNumber <= 18) {
       return require('../assets/images/Volteando.png');
     } else {
-      return require('../assets/images/nonVolteando.png'); 
+      return require('../assets/images/nonVolteando.png');
     }
   };
 
@@ -115,10 +107,8 @@ useEffect(() => {
       return;
     }
     setSelectedDate(day.dateString);
-    setModalVisible(true);
+    setModalVisible(true); // فتح Modal لإدخال البيض المتبقي
   };
-
-
 
   const calculateDayNumber = (startDate) => {
     if (!startDate) return 0;
@@ -126,14 +116,15 @@ useEffect(() => {
     const start = new Date(startDate);
     return Math.floor((today - start) / (1000 * 3600 * 24)) + 1;
   };
+
   const generateMarkedDates = (startDate, eggCount) => {
     const marked = {};
     if (!startDate) return marked;
-  
+
     const hatchingDate = new Date(startDate);
     hatchingDate.setDate(hatchingDate.getDate() + 21);
     const today = new Date().toISOString().split('T')[0];
-  
+
     let currentDate = new Date(startDate);
     while (currentDate <= new Date(today)) {
       const dateString = currentDate.toISOString().split('T')[0];
@@ -143,7 +134,7 @@ useEffect(() => {
       };
       currentDate.setDate(currentDate.getDate() + 1);
     }
-  
+
     marked[startDate] = { startingDay: true, color: 'rgba(0, 123, 255, 0.5)', textColor: 'white' };
     marked[hatchingDate.toISOString().split('T')[0]] = {
       marked: true,
@@ -152,10 +143,9 @@ useEffect(() => {
         text: { color: 'red', fontWeight: 'bold' },
       },
     };
-  
-    return marked;
-};
 
+    return marked;
+  };
 
   const handleSaveEggCount = async () => {
     try {
@@ -168,7 +158,7 @@ useEffect(() => {
       console.error('Error updating egg count:', error);
       Alert.alert('Error', 'Failed to update egg count.');
     } finally {
-      setModalVisible(false);
+      setModalVisible(false); 
       setRemainingEggs('');
     }
   };
@@ -183,40 +173,34 @@ useEffect(() => {
           <Text style={styles.value}>{humidity}</Text>
         </View>
         <View style={styles.eggContainer}>
-        <Image source={require('../assets/images/pollo.png')} style={styles.eggImage} />
+          <Image source={require('../assets/images/pollo.png')} style={styles.eggImage} />
           <View style={styles.eggImageContainer}>
-          
-            <Image
-              source={getEggTurningIcon(currentCycle.incubationDate)} 
-              style={styles.eggTurningIcon}
-              
-            /> 
+            <Image source={getEggTurningIcon(currentCycle.incubationDate)} style={styles.eggTurningIcon} />
           </View>
-          
           <Text style={styles.remainingDays}>
             {21 - calculateDayNumber(currentCycle.incubationDate)}
-            
           </Text>
         </View>
-
         <View style={styles.indicator}>
           <Image source={require('../assets/images/temperatura.png')} style={styles.icon} />
           <Text style={styles.value}>{temperature}</Text>
         </View>
       </View>
-      
-      
 
       <Calendar
-        markingType="period"
-        markedDates={markedDates}
-        onDayPress={handleDayPress}
-        theme={{
-          selectedDayBackgroundColor: 'rgba(0, 123, 255, 0.7)',
-          todayTextColor: '#007BFF',
-          arrowColor: 'blue',
-        }}
-      />
+  style={{
+   // height: 300,
+  }}
+  markingType="period"
+  markedDates={markedDates}
+  onDayPress={handleDayPress}
+  theme={{
+    selectedDayBackgroundColor: 'rgba(0, 123, 255, 0.7)',
+    todayTextColor: '#007BFF',
+    arrowColor: 'blue',
+  }}
+/>
+
 
       <View style={styles.iconButtonContainer}>
         <TouchableOpacity
@@ -226,15 +210,12 @@ useEffect(() => {
             }
           }}
         >
-          <Image
-            source={require('../assets/images/decrease.png')}
-            style={styles.iconButton}
-          />
+          <Image source={require('../assets/images/decrease.png')} style={styles.iconButton} />
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.huevosButton}
-          onPress={() => alert('Huevos button pressed')}
+          onPress={() => setImageModalVisible(true)} 
         >
           <Text style={styles.huevosButtonText}>Huevos</Text>
         </TouchableOpacity>
@@ -246,41 +227,61 @@ useEffect(() => {
             }
           }}
         >
-          <Image
-            source={require('../assets/images/increase.png')}
-            style={styles.iconButton}
-          />
+          <Image source={require('../assets/images/increase.png')} style={styles.iconButton} />
         </TouchableOpacity>
       </View>
 
-      <Modal visible={modalVisible} transparent={true} animationType="slide">
-  <View style={styles.modalContainer}>
-    <View style={styles.modalContent}>
-      <Text>Enter remaining eggs for {selectedDate}:</Text>
-      <TextInput
-        style={styles.input}
-        keyboardType="numeric"
-        value={remainingEggs}
-        onChangeText={setRemainingEggs}
-      />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.huevosButton} onPress={() => setModalVisible(false)}>
-          <Text style={styles.buttonText}>Cancel</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.huevosButton} onPress={handleSaveEggCount}>
-          <Text style={styles.buttonText}>Save</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  </View>
-</Modal>
+     
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.textRight}>Enter remaining eggs for {selectedDate}:</Text>
+            <TextInput
+              style={styles.input}
+              keyboardType="numeric"
+              value={remainingEggs}
+              onChangeText={setRemainingEggs}
+            />
+            <Button title="Save" onPress={handleSaveEggCount} />
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
 
-
+     
+      <Modal
+        visible={imageModalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setImageModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Image
+              source={require('../assets/images/ouevos1.jpg')}
+              style={styles.modalImage}
+            />
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setImageModalVisible(false)}
+            >
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
 
-
-
-
-export default MainScreen; 
+export default MainScreen;

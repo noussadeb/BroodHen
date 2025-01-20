@@ -4,11 +4,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../(tabs)/Login';
 import SignupScreen from '../(tabs)/Signup';
-import MainScreen from '../(tabs)/Home'; // تأكد من أنك قد أنشأت الشاشة الرئيسية
+import MainScreen from '../(tabs)/Home'; 
 import VentaScreen from '../(tabs)/Venta';
 import InformacionScreen from '../(tabs)/Informacion';
 import TiendaScreen from '../(tabs)/Tienda';
-import PercentageScreen from '../(tabs)/Percentage';
+import PorcentajeScreen from '../(tabs)/Porcentaje';
 import { ThemeProvider } from '../components/ThemeContext';
 import SettingsScreen from '../(tabs)/Ajustes';
 import ArchivosScreen from '../(tabs)/Archivos';
@@ -45,7 +45,7 @@ function App() {
           <Stack.Screen name="HatchPercentage" component={HatchPercentageScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="Archivos" component={ArchivosScreen} />
-          <Stack.Screen name="Percentage" component={PercentageScreen} />
+          <Stack.Screen name="Porcentaje" component={PorcentajeScreen} />
           <Stack.Screen name="InfPollo" component={InfPolloScreen} />
         </Stack.Navigator>
       </NavigationContainer>

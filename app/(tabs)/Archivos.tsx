@@ -44,7 +44,7 @@ function ArchivosScreen() {
 
   const handleLogPress = (logId: string) => {
    
-    navigation.navigate('Percentage', { logId });
+    navigation.navigate('Porcentaje', { logId });
   };
 
   const renderLogItem = ({ item }: { item: HatchLog }) => (
@@ -74,6 +74,7 @@ function ArchivosScreen() {
     <View style={styles.container}>
      
       <Text style={styles.header}>Registros de Incubaciones</Text>
+      
       <FlatList
         data={logs}
         keyExtractor={(item) => item.id}

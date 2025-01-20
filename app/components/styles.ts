@@ -208,6 +208,22 @@ title: {
      marginTop: 20, 
      width: '100%' 
    },
+
+
+  modalImage: {
+    width: 300, // عرض الصورة
+    height: 300, // ارتفاع الصورة
+    marginBottom: 20, // المسافة بين الصورة وزر الإغلاق
+  },
+  closeButton: {
+    backgroundColor: '#d9534f', // لون خلفية زر الإغلاق
+    padding: 10,
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 16,
+  },
    
 
 
@@ -388,7 +404,7 @@ header: {
   color: '#003366',
 },
 logItem: {
-  backgroundColor: '#E6F0FA',
+  backgroundColor: 'rgba(233, 241, 251, 0.5)',
   padding: 15,
   borderRadius: 10,
   marginBottom: 10,
@@ -401,7 +417,7 @@ logItem: {
 
 detail: {
   fontSize: 14,
-  color: '#007ACC',
+  color: 'rgba(2, 29, 62, 0.5)',
   marginTop: 5,
 },
 loadingContainer: {
