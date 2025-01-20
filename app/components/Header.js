@@ -8,32 +8,32 @@ import {
   StyleSheet,
   Pressable,
 } from 'react-native';
-// استخدم Link فقط إذا كنت تستخدم expo-router
+
 import { Link } from 'expo-router';
 import styles from '../components/styles';
 
 const Header = ({ navigation }) => {
-  const [menuVisible, setMenuVisible] = useState(false); // حالة القائمة
+  const [menuVisible, setMenuVisible] = useState(false); 
 
   const toggleMenu = () => {
-    setMenuVisible(!menuVisible); // تبديل حالة القائمة
+    setMenuVisible(!menuVisible); 
   };
 
   return (
     <View>
-      {/* شريط العنوان */}
+      
       <View style={styles.headerH}>
         <TouchableOpacity onPress={toggleMenu}>
           <Image
-            source={require('../assets/images/icon-menu.png')} // تأكد من المسار الصحيح للصورة
+            source={require('../assets/images/icon-menu.png')} 
             style={styles.menuIcon}
           />
         </TouchableOpacity>
         <Text style={styles.headerText}>BroodHen</Text>
-        <View style={styles.rightSpace}></View> {/* لضبط المحاذاة */}
+        <View style={styles.rightSpace}></View>
       </View>
 
-      {/* القائمة المنبثقة */}
+      
       <Modal
         visible={menuVisible}
         transparent
@@ -42,7 +42,7 @@ const Header = ({ navigation }) => {
       >
         <Pressable style={styles.modalBackground} onPress={toggleMenu}>
           <View style={styles.menuContainer}>
-            {/* قائمة الأزرار */}
+            
             {navigation ? null : (
               <>
                 {/* Nueva eclosión */}

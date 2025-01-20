@@ -211,12 +211,12 @@ title: {
 
 
   modalImage: {
-    width: 300, // عرض الصورة
-    height: 300, // ارتفاع الصورة
-    marginBottom: 20, // المسافة بين الصورة وزر الإغلاق
+    width: 300, 
+    height: 300, 
+    marginBottom: 20,
   },
   closeButton: {
-    backgroundColor: '#d9534f', // لون خلفية زر الإغلاق
+    backgroundColor: '#d9534f', 
     padding: 10,
     borderRadius: 5,
   },
@@ -581,7 +581,7 @@ logoutText: {
         width: 300,
         height: 300,
         marginBottom: 20,
-        borderRadius: 10, // إضافة حدود مستديرة للصورة
+        borderRadius: 10, 
       },
       
       

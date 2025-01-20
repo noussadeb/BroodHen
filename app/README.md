@@ -75,4 +75,13 @@ Si deseas contribuir al desarrollo de la aplicación, puedes:
  [Jira] (https://red-team-yf0eeqx2.atlassian.net/jira/software/projects/KAN/list?atlOrigin=eyJpIjoiOWI2Y2ZlNTE3NzljNGFiYTg3MTUwMDIwOTIxZTNiNzQiLCJwIjoiaiJ9)
  [GitHub] (https://github.com/noussadeb/BroodHen)
 
+## Distribución de Tareas y Horas de Trabajo
+
+El reparto final de tareas y las horas de dedicación de cada miembro del grupo están disponibles en el siguiente enlace:
+
+- **[Reparto de Tareas y Horas de Trabajo - Google Sheets](https://docs.google.com/spreadsheets/d/1Q8L0jBgR7SnZz6tWi8LzNZM_-NKdhdmzgxeO3wfSEcE/edit?gid=0#gid=0)**
+
+
+
+
 Para contactarnos o hacer consultas, puedes enviarnos un correo a: [lb000059@red.ujaen.es o dn000014@red.ujaen.es].

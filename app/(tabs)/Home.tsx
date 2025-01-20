@@ -11,8 +11,8 @@ const MainScreen = () => {
   const [currentCycleIndex, setCurrentCycleIndex] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
   const [remainingEggs, setRemainingEggs] = useState('');
-  const [modalVisible, setModalVisible] = useState(false); // حالة Modal لإدخال البيض المتبقي
-  const [imageModalVisible, setImageModalVisible] = useState(false); // حالة Modal لإظهار الصورة
+  const [modalVisible, setModalVisible] = useState(false); 
+  const [imageModalVisible, setImageModalVisible] = useState(false); 
   const [markedDates, setMarkedDates] = useState({});
   const [temperature, setTemperature] = useState('N/A');
   const [humidity, setHumidity] = useState('N/A');
@@ -107,7 +107,7 @@ const MainScreen = () => {
       return;
     }
     setSelectedDate(day.dateString);
-    setModalVisible(true); // فتح Modal لإدخال البيض المتبقي
+    setModalVisible(true); 
   };
 
   const calculateDayNumber = (startDate) => {
@@ -189,7 +189,7 @@ const MainScreen = () => {
 
       <Calendar
   style={{
-   // height: 300,
+    height: 300,
   }}
   markingType="period"
   markedDates={markedDates}
